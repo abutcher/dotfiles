@@ -4,11 +4,9 @@
 (package-initialize)
 
 ;; Color theme
-;; https://github.com/crafterm/twilight-emacs
-(require 'color-theme)
-(color-theme-initialize)
-(load-file "~/.emacs.d/twilight-emacs/color-theme-twilight.el")
-(color-theme-twilight)
+;; https://github.com/bbatsov/zenburn-emacs
+(load-file "~/.emacs.d/zenburn-emacs/zenburn-theme.el")
+(load-theme 'zenburn t)
 
 ;; Disable auto save
 (setq auto-save-default nil)
@@ -27,8 +25,27 @@
 (switch-to-buffer (get-buffer-create "emtpy"))
 (delete-other-windows)
 
+;; Auto-complete
+;; https://github.com/auto-complete/auto-complete
+(ac-config-default)
+
 ;; Go fmt on save
 (add-hook 'before-save-hook #'gofmt-before-save)
+
+;; Go-mode.el
+;; https://github.com/dominikh/go-mode.el
+(autoload 'go-mode "go-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+
+;; Go autocomplete
+;; https://github.com/nsf/gocode/blob/master/emacs/go-autocomplete.el
+(load-file "~/.emacs.d/go-autocomplete.el")
+(require 'go-autocomplete)
+
+;; Go flymake
+;; https://github.com/dougm/goflymake
+(add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
+(require 'go-flymake)
 
 (custom-set-variables
  '(package-selected-packages (quote (flymake-go go-mode))))
