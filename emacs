@@ -8,6 +8,9 @@
 (load-file "~/.emacs.d/zenburn-emacs/zenburn-theme.el")
 (load-theme 'zenburn t)
 
+;; Disable menu bar
+(menu-bar-mode -1)
+
 ;; Disable auto save
 (setq auto-save-default nil)
 
