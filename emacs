@@ -11,8 +11,8 @@
 ;; Disable menu bar
 (menu-bar-mode -1)
 
-;; Disable auto save
-(setq auto-save-default nil)
+;; Place backup files in ~/.saves
+(setq backup-directory-alist `(("." . "~/.saves")))
 
 ;; Load emacs 24's package system. Add MELPA repository.
 (when (>= emacs-major-version 24)
